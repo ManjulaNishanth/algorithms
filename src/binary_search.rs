@@ -1,4 +1,3 @@
-
 pub fn binary_search<T: Ord + std::fmt::Debug>(input: &[T], target: &T) -> Option<usize> {
     let mut min: i8 = 0;
     let mut max: i8 = input.len() as i8 - 1;
@@ -20,6 +19,14 @@ pub fn binary_search<T: Ord + std::fmt::Debug>(input: &[T], target: &T) -> Optio
     None
 }
 
-// fn main() {
-
-// }
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn test_binary_search() {
+        let mut input = [6, 8, 2, 9, 4, 0, 1].to_vec();
+        input.sort();
+        let result = binary_search::<i32>(&input, &4);
+        assert_eq!(result, Some(3));
+    }
+}
